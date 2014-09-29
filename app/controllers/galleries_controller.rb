@@ -18,7 +18,6 @@ class GalleriesController < ApplicationController
       name: params[:gallery][:name],
       description: params[:gallery][:description]
     )
-
     redirect_to "/"
   end
 
@@ -36,7 +35,13 @@ class GalleriesController < ApplicationController
       name: params[:gallery][:name],
       description: params[:gallery][:description]
     )
-  redirect_to "/"
+    redirect_to "/"
+  end
+
+  def destroy
+    gallery = Gallery.find(params[:id])
+    gallery.destroy
+    redirect_to "/"
   end
 
 end
