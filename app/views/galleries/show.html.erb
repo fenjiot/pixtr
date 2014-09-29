@@ -1,1 +1,7 @@
 <h2>This is a page for the <%= @gallery.name %></h2>
+
+<% if @gallery != [] %>
+
+<% else %>
+  <h3>Ah snap! There aren't any images in this gallery</h3>
+<% end %>

@@ -2,7 +2,7 @@ class GalleriesController < ApplicationController
   def index
     # We don't actually need render index becuase it till automatically render the method
     # name index, so if it was called game it would render :game.
-    @galleries = Gallery.all
+    @galleries = Gallery.all.order("name ASC")
     render :index
   end 
 
@@ -29,4 +29,14 @@ class GalleriesController < ApplicationController
   def edit
     @gallery = Gallery.find(params[:id])
   end
+
+  def update
+    gallery = Gallery.find(params[:id]) 
+    gallery.update(
+      name: params[:gallery][:name],
+      description: params[:gallery][:description]
+    )
+  redirect_to "/"
+  end
+
 end
