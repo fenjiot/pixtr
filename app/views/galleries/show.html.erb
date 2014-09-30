@@ -1,7 +1,15 @@
 <h2>This is a page for the <%= @gallery.name %></h2>
 
-<% if @gallery != [] %>
-
-<% else %>
+<% if @gallery.images == [] %>
   <h3>Ah snap! There aren't any images in this gallery</h3>
+<% else %>
+  <ul>
+    <% @gallery.images.each do |image| %>
+      <li>
+        <%= image_tag image.url %>
+        <br />
+        <%= link_to image.name, gallery_image_path(@gallery, image) %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

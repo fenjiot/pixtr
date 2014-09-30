@@ -5,9 +5,7 @@
   <ul>
     <% @galleries.each do |gallery| %>
       <li>
-        <%= link_to gallery.name, gallery %>
-        - 
-        <%= gallery.description%>
+        <%= link_to gallery.name, gallery %> - <%= gallery.description%>
         <%= link_to "Edit", edit_gallery_path(gallery) %>
 
         <%= form_for gallery, method: :delete do |form| %> 
