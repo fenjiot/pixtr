@@ -1,26 +1,18 @@
 <h2>Pixtr says Hi</h2>
 
-<a href="/galleries/new">Make a new gallery</a>
+<%= link_to "Make a new gallery", new_gallery_path %>
 
   <ul>
     <% @galleries.each do |gallery| %>
       <li>
-        <a href="/galleries/<%= gallery.id %>">
-          <%= gallery.name %>
-        </a>
+        <%= link_to gallery.name, gallery %>
         - 
         <%= gallery.description%>
-        <a href="/galleries/<%= gallery.id %>/edit">
-          edit
-        </a>
+        <%= link_to "Edit", edit_gallery_path(gallery) %>
 
-        <form action="/galleries/<%= gallery.id %>" method="POST">
-          <input type="hidden" name="_method" value="DELETE" />
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" /> 
-          <div>
-            <input type="submit" value="Delete gallery" />
-          </div>
-        </form>
+        <%= form_for gallery, method: :delete do |form| %> 
+          <%= form.submit "Delete Gallery" %>
+        <% end %>
 
       </li>
     <% end %>
