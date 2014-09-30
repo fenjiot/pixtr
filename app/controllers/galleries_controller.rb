@@ -9,7 +9,8 @@ class GalleriesController < ApplicationController
 
   def create
     gallery = Gallery.create(gallery_params)
-    redirect_to(gallery_path(gallery))
+
+    redirect_to gallery
   end
 
   def show
@@ -24,21 +25,20 @@ class GalleriesController < ApplicationController
     gallery = Gallery.find(params[:id]) 
     gallery.update(gallery_params)
 
-    redirect_to "/"
+    redirect_to galleries_path
   end
 
   def destroy
     gallery = Gallery.find(params[:id])
     gallery.destroy
 
-    redirect_to "/"
+    redirect_to galleries_path
   end
 
 
   private
 
   def gallery_params
-    # whitelists attributes
     params.require(:gallery).permit(:name, :description)
   end
 
