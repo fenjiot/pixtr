@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+# Installing pry
+gem 'pry', group: :development
+# with pry installed
+# call binding.pry in any action
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
