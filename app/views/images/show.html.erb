@@ -1,4 +1,4 @@
-<h2>You are viewing <%= @image.name %></h2>
+<h2>You are viewing <span class="turq"><%= @image.name %></span></h2>
 <h4>Return to <%= link_to @gallery.name, gallery_path(@gallery) %></h4>
 
 <%= image_tag @image.url %>

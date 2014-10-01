@@ -1,0 +1,9 @@
+<% if target.errors.any? %>
+  <%= image_tag "http://abillionlaughs.com/pics/2/http---www-wallpaperswala-com-wp-content-gallery-funny-cat-cute-funny-cat-sliping-a-paper-jpg" %> 
+  <h2><%= pluralize target.errors.count, "error" %> prevented the form from saving:</h2>
+  <ul>
+    <% target.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

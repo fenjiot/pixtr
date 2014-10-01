@@ -29,7 +29,7 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.find(params[:id]) 
 
     if @gallery.update(gallery_params)
-      redirect_to gallery_path(@galleries)
+      redirect_to gallery_path(@gallery)
     else
       render :edit
     end
