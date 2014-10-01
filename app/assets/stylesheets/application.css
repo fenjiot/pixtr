@@ -35,3 +35,6 @@ a {
 
 a:link, a:visited, a:hover, a:active { text-decoration: none; color: #87AF5F; }
 
+.turq {
+  color: #82C5E7;
+}

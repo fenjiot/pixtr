@@ -1,0 +1,19 @@
+<h2>Editing the 
+  <%= link_to @gallery.name, gallery_path(@gallery) %>
+  gallery.
+</h2>
+
+<%=# render "form", gallery: @gallery %>
+<%= form_for [@gallery, image] do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

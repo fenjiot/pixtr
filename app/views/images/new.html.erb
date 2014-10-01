@@ -1,0 +1,18 @@
+<h2>Add an image to the 
+  <%= link_to @gallery.name, gallery_path(@gallery) %>
+  gallery.
+</h2>
+
+<%= form_for [@gallery, @image] do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
