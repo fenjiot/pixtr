@@ -6,12 +6,15 @@
     <% @galleries.each do |gallery| %>
       <li>
         <%= link_to gallery.name, gallery %> - <%= gallery.description%>
-        <%= link_to "Edit", edit_gallery_path(gallery) %>
+        <%= link_to "Edit gallery", edit_gallery_path(gallery) %>
 
+        <br />
+        <br />
         <%= form_for gallery, method: :delete do |form| %> 
           <%= form.submit "Delete Gallery" %>
         <% end %>
-
+        <br />
+        <br />
       </li>
     <% end %>
   </ul>

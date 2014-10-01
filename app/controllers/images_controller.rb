@@ -17,6 +17,18 @@ class ImagesController < ApplicationController
     redirect_to gallery_path(@gallery)
   end
 
+  def edit
+    @gallery = Gallery.find(params[:gallery_id])
+    @image = @gallery.images.find(params[:id])
+  end
+
+  def update
+    gallery = Gallery.find(params[:gallery_id])
+    image = gallery.images.find(params[:id])
+    image.update(image_params)
+
+    redirect_to gallery_image_path
+  end
 
   private
 

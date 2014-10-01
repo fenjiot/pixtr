@@ -12,6 +12,10 @@
         <%= image_tag image.url %>
         <br />
         <%= link_to image.name, gallery_image_path(@gallery, image) %>
+        -
+        <%= link_to "Edit image", edit_gallery_image_path(@gallery, image) %>
+        <br />
+        <br />
       </li>
     <% end %>
   </ul>

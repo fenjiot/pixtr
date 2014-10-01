@@ -3,16 +3,4 @@
   gallery.
 </h2>
 
-<%= form_for [@gallery, @image] do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :url %>
-    <%= form.text_field :url %>
-  </div>
-
-  <%= form.submit %>
-<% end %>
+<%= render "form", gallery: @gallery, image: @image %>
