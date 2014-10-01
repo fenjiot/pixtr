@@ -7,8 +7,10 @@
       <li>
         <%= link_to gallery.name, gallery %> - <%= gallery.description%>
         <%= link_to "Edit gallery", edit_gallery_path(gallery) %>
-
         <br />
+        <div>
+
+        </div>
         <br />
         <%= form_for gallery, method: :delete do |form| %> 
           <%= form.submit "Delete Gallery" %>

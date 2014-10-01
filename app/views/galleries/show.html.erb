@@ -2,7 +2,7 @@
 <h4><%= @gallery.description %></h4>
 
 <% if @gallery.images == [] %>
-  <h3>Ah snap! There aren't any images in this gallery</h3>
+  <h3>Ah snap! There aren't any images in this gallery yet.</h3>
   <%= link_to "Add some!", new_gallery_image_path(@gallery) %>
 <% else %>
   <%= link_to "Add images", new_gallery_image_path(@gallery) %>
