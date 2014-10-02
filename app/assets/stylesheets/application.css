@@ -18,9 +18,15 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   background-color: #292929;
   color: #BFBFBF;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-ul, li { 
+.session {
+    float: right;
+}
+
+ul, li {
   list-style-type: none; 
   text-decoration: none;
 }

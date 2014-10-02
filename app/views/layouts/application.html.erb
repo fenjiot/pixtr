@@ -7,10 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="session">
+    <%= link_to "Sign up", new_user_path %>
+  </header>
+
   <h1>
     <%= link_to "Pixtr", root_path %>. photo. share.
   </h1>
-<%= yield %>
+
+  <%= link_to "Sign up", new_user_path %>
+
+  <%= yield %>
 
 </body>
 </html>
