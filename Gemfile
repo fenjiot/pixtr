@@ -11,6 +11,9 @@ gem 'pry', group: :development
 gem 'monban'
 gem 'monban-generators'
 
+# must install after you have log in key heroku
+gem 'rails_12factor', group: :production
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
