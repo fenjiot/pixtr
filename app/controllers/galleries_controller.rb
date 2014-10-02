@@ -1,14 +1,14 @@
 class GalleriesController < ApplicationController
   def index
-    @galleries = Gallery.all.order("name ASC")
+    @galleries = current_user.galleries.all.order("name ASC")
   end 
 
   def new
-    @gallery = Gallery.new
+    @gallery = current_user.galleries.new
   end
 
   def create
-    @gallery = Gallery.new(gallery_params)
+    @gallery = current_user.galleries.new(gallery_params)
 
     if @gallery.save
       redirect_to gallery_path(@gallery)
@@ -18,15 +18,15 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @gallery = Gallery.find(params[:id])
+    @gallery = load_gallery_from_url
   end
 
   def edit
-    @gallery = Gallery.find(params[:id])
+    @gallery = load_gallery_from_url
   end
 
   def update
-    @gallery = Gallery.find(params[:id]) 
+    @gallery = load_gallery_from_url 
 
     if @gallery.update(gallery_params)
       redirect_to gallery_path(@gallery)
@@ -36,7 +36,7 @@ class GalleriesController < ApplicationController
   end
 
   def destroy
-    gallery = Gallery.find(params[:id])
+    gallery = load_gallery_from_url
     gallery.destroy
 
     redirect_to galleries_path
@@ -49,4 +49,8 @@ class GalleriesController < ApplicationController
     params.require(:gallery).permit(:name, :description)
   end
 
+  def load_gallery_from_url
+    current_user.galleries.find(params[:id])
+  end
 end
+

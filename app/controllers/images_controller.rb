@@ -1,16 +1,16 @@
 class ImagesController < ApplicationController
   def show
-    @gallery = Gallery.find(params[:gallery_id])
+    @gallery = load_gallery_from_url
     @image = @gallery.images.find(params[:id])
   end
 
   def new
-    @gallery = Gallery.find(params[:gallery_id])
+    @gallery = load_gallery_from_url
     @image = @gallery.images.new
   end
 
   def create
-    @gallery = Gallery.find(params[:gallery_id])
+    @gallery = load_gallery_from_url
     @image = @gallery.images.new(image_params)
 
     if @image.save(image_params)
@@ -21,12 +21,12 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    @gallery = Gallery.find(params[:gallery_id])
+    @gallery = load_gallery_from_url
     @image = @gallery.images.find(params[:id])
   end
 
   def update
-    @gallery = Gallery.find(params[:gallery_id])
+    @gallery = load_gallery_from_url
     @image = @gallery.images.find(params[:id])
     if @image.update(image_params)
       redirect_to gallery_image_path
@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    gallery = Gallery.find(params[:gallery_id])
+    gallery = load_gallery_from_url
     image = gallery.images.find(params[:id])
     image.destory(image_params)
   end
@@ -50,4 +50,7 @@ class ImagesController < ApplicationController
       permit(:name, :url)
   end
 
+  def load_gallery_from_url
+    current_user.galleries.find(params[:gallery_id])
+  end
 end
