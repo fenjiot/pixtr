@@ -5,6 +5,11 @@ gem 'pry', group: :development
 # with pry installed
 # call binding.pry in any action
 
+# Install monabn which will set up users and deal with security
+# BEAWARE that you gem installed monban already, so all the files that would
+# have been added for you to see may not show up in your commit.
+gem 'monban'
+gem 'monban-generators'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
