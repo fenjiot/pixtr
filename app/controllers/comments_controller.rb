@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = @image.comments.new(comment_params)
     @gallery = @image.gallery
-    @comments = @image.comments.all
+    @comments = @image.comments.all.order("created_at DESC")
 
     if @comment.save
       redirect_to gallery_image_path(@gallery, @image)
