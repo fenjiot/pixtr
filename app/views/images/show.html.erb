@@ -2,3 +2,24 @@
 <h4>Return to <%= link_to @gallery.name, gallery_path(@gallery) %></h4>
 
 <%= image_tag @image.url %>
+
+<%= form_for [@image, @comment] do |form| %>
+  <%= render "error_messages", target: @comment %>
+  <div>
+    <%= form.label :body, "Comment" %>
+    <br />
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit "Add comment" %>
+  </div>
+<% end %>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <%= comment.body %> - <%= comment.user.email %>
+    </li>
+  <% end %>
+</ul>
