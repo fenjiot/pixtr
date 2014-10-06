@@ -19,7 +19,9 @@
 <ul>
   <% @comments.each do |comment| %>
     <li>
-      <%= comment.body %> - <%= comment.user.email %>
+      <%= comment.user.email %> said <br /> &nbsp;&nbsp; <%= comment.body %> - (<%= time_ago_in_words comment.created_at %> ago)
+      <br />
+      <br />
     </li>
   <% end %>
 </ul>
