@@ -1,7 +1,7 @@
 class GalleriesController < ApplicationController
   def index
     @galleries = Gallery.all.order("name ASC")
-  end 
+  end
 
   def new
     @gallery = current_user.galleries.new
