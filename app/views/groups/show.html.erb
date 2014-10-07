@@ -1,3 +1,10 @@
 <h2>Showing the <span class="turq"><%= @group.name %></span> group</h2>
 
-<p><%= @group.description %>
+<p><%= @group.description %></p>
+
+<h3>Group Members</h3>
+<ul>
+  <% @members.each do |member| %>
+    <li><%= member.email %></li>
+  <% end %>
+</ul>
