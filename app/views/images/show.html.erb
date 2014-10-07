@@ -1,7 +1,7 @@
 <h2>You are viewing <span class="turq"><%= @image.name %></span></h2>
 <h4>Return to <%= link_to @gallery.name, gallery_path(@gallery) %></h4>
 
-<%= image_tag @image.url %>
+<%= link_to (image_tag @image.url), gallery_image_path(@gallery, @image)%>
 
 <%= form_for [@image, @comment] do |form| %>
   <%= render "error_messages", target: @comment %>
@@ -18,10 +18,6 @@
 
 <ul>
   <% @comments.each do |comment| %>
-    <li>
-      <%= comment.user.email %> said <br /> &nbsp;&nbsp; <%= comment.body %> - (<%= time_ago_in_words comment.created_at %> ago)
-      <br />
-      <br />
-    </li>
+    <%= render "comments/comment", comment: comment %>
   <% end %>
 </ul>

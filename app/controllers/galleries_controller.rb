@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
   def index
-    @galleries = current_user.galleries.all.order("name ASC")
+    @galleries = Gallery.all.order("name ASC")
   end 
 
   def new
@@ -18,7 +18,7 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @gallery = load_gallery_from_url
+    @gallery = Gallery.find(params[:id])
   end
 
   def edit
