@@ -5,6 +5,10 @@
   <ul>
     <% @galleries.each do |gallery| %>
       <li>
+        <% if gallery.has_image? %>
+          <%= image_tag gallery.first_image, class: "image_preview" %>
+          <br />
+      <% end %>
         <%= link_to gallery.name, gallery %> - <%= gallery.description%>
         <%= link_to "Edit gallery", edit_gallery_path(gallery) %>
         <br />

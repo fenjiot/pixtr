@@ -4,4 +4,12 @@ class Gallery < ActiveRecord::Base
 
   validates :name, presence: true
   validates :description, presence: true
+
+  def has_image?
+    !images.empty?
+  end
+
+  def first_image
+    images.first.url
+  end
 end

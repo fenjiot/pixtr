@@ -50,3 +50,6 @@ a:link, a:visited, a:hover, a:active { text-decoration: none; color: #87AF5F; }
   color: #D75F5F;
 }
 
+.image_preview {
+  max-width: 150px;
+}
