@@ -7,7 +7,17 @@
       <%= link_to group.name, group %>
       -
       <%= group.description %>
-      <% image_tag group.name %>
+      <% if group.members.include? current_user %>
+        <%= button_to "Leave Group",
+            group_group_membership_path(
+              group,
+              current_user.membership_for(group)
+            ),
+            method: :delete %>
+      <% else %>
+        <%= button_to "Join Group",
+          group_group_memberships_path(group) %>
+      <% end %>
     </li>
   <% end %>
 </ul>
