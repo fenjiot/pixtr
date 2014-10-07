@@ -1,18 +1,18 @@
 class ImagesController < ApplicationController
   def show
-    @gallery = Gallery.find(params[:gallery_id])
+    @gallery = load_gallery_from_url
     @image = @gallery.images.find(params[:id])
     @comment = Comment.new
     @comments = @image.comments.recent
   end
 
   def new
-    @gallery = load_gallery_from_url
+    @gallery = load_personal_gallery_from_url
     @image = @gallery.images.new
   end
 
   def create
-    @gallery = load_gallery_from_url
+    @gallery = load_personal_gallery_from_url
     @image = @gallery.images.new(image_params)
 
     if @image.save(image_params)
@@ -23,12 +23,12 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    @gallery = load_gallery_from_url
+    @gallery = load_personal_gallery_from_url
     @image = @gallery.images.find(params[:id])
   end
 
   def update
-    @gallery = load_gallery_from_url
+    @gallery = load_personal_gallery_from_url
     @image = @gallery.images.find(params[:id])
     if @image.update(image_params)
       redirect_to gallery_image_path
@@ -38,7 +38,7 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    gallery = load_gallery_from_url
+    gallery = load_personal_gallery_from_url
     image = gallery.images.find(params[:id])
     image.destory(image_params)
   end
@@ -53,6 +53,10 @@ class ImagesController < ApplicationController
   end
 
   def load_gallery_from_url
+    Gallery.find(params[:gallery_id])
+  end
+
+  def load_personal_gallery_from_url
     current_user.galleries.find(params[:gallery_id])
   end
 end
