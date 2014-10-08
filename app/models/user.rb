@@ -14,12 +14,14 @@ class User < ActiveRecord::Base
   end
 
   def like(image)
-#    Like.create(image_id: image.id, user_id: id)
     liked_images << image
   end
 
   def unlike(image)
-    Like.find("image_id: image.id AND user_id: id")
-    Like.destroy()
+    liked_images.destroy(image)
+  end
+
+  def like?(image)
+    liked_images.include?(image)
   end
 end
