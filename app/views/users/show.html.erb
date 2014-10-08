@@ -1,0 +1,16 @@
+<h2>Images liked by: <%= @user.email %></h2>
+<h4>IMAGES!</h4>
+
+<ul>
+  <% @user.liked_images.each do |image| %>
+    <li>
+      <%= image_tag image.url %>
+      <br />
+      <%= image.name %>
+      <br />
+      <%= button_to "Unlike this image", image_like_path(image), method: :delete %>
+      <br />
+      <br />
+    </li>
+  <% end %>
+</ul>
