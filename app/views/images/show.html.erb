@@ -1,10 +1,10 @@
 <h2>You are viewing <span class="turq"><%= @image.name %></span></h2>
 <h4>Return to <%= link_to @gallery.name, gallery_path(@gallery) %></h4>
 
-<% if ! current_user.like?(@image) %>
-  <%= button_to "Like this image", image_like_path(@image) %>
-<% else %>
+<% if current_user.like?(@image) %>
   <%= button_to "Unlike this image", image_like_path(@image), method: :delete %>
+<% else %>
+  <%= button_to "Like this image", image_like_path(@image) %>
 <% end %>
 
 <%= link_to (image_tag @image.url), gallery_image_path(@gallery, @image)%>
