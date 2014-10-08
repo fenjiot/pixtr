@@ -1,6 +1,8 @@
 <h2>You are viewing <span class="turq"><%= @image.name %></span></h2>
 <h4>Return to <%= link_to @gallery.name, gallery_path(@gallery) %></h4>
 
+<%= button_to "Like this image", image_likes_path(@image) %>
+
 <%= link_to (image_tag @image.url), gallery_image_path(@gallery, @image)%>
 
 <%= form_for [@image, @comment] do |form| %>
