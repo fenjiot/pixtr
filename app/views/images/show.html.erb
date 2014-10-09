@@ -8,12 +8,6 @@
 <% end %>
 
 <p>Likes: <%= @likes.count %></p>
-<p>Liked by:</p>
-<ul>
-  <% @image.likes.each do |like| %>
-    <li><%= like.user.email %> -- </li>
-  <% end %>
-</ul>
 
 <ul>
   <% @image.likers.each do |user| %>
@@ -22,6 +16,22 @@
 </ul>
 
 <%= link_to (image_tag @image.url), gallery_image_path(@gallery, @image)%>
+
+<h4>Tags:</h4>
+<%= form_for [@image.gallery, @image] do |form| %>
+  <%= form.collection_check_boxes(:tag_ids, @available_tags, :id, :name) %>
+  <%= form.submit "Add tags" %>
+<% end %>
+
+<%= @image.tag_words %>
+
+<h4>Groups:</h4>
+<% if current_user == @image.gallery.user %>
+  <%= form_for [@image.gallery, @image] do |form| %>
+    <%= form.collection_check_boxes(:group_ids, @available_groups, :id, :name) %>
+    <%= form.submit "Add to group" %>
+  <% end %>
+<% end %>
 
 <%= form_for [@image, @comment] do |form| %>
   <%= render "error_messages", target: @comment %>

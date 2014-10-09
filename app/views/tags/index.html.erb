@@ -1,0 +1,22 @@
+<h2>Tags</h2>
+
+<%= form_for @tag do |form| %>
+  <%= render "error_messages", target: @tag %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<ul>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= link_to tag.name, tag_path(tag) %>
+    </li>
+  <% end %>
+</ul>

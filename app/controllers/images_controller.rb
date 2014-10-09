@@ -5,6 +5,8 @@ class ImagesController < ApplicationController
     @comment = Comment.new
     @comments = @image.comments.recent
     @likes = @image.likes
+    @available_groups = Group.all
+    @available_tags = Tag.all
   end
 
   def new
@@ -50,7 +52,7 @@ class ImagesController < ApplicationController
   def image_params
     params.
       require(:image).
-      permit(:name, :url)
+      permit(:name, :url, group_ids: [], tag_ids: [])
   end
 
   def load_gallery_from_url

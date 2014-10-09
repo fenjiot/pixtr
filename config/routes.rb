@@ -19,5 +19,5 @@ Rails.application.routes.draw do
     resource :grouping, only: [:create]
   end
 
-  resources :tags, only: [:index, :create]
+  resources :tags, only: [:index, :create, :show]
 end
